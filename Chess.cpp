@@ -91,7 +91,6 @@ void Referee::print() const {
         auto start_figure = board_(start);
         if (err > SeparateErrors)
             return err;
-        // err == Normal || LeftCastling || RightCastling || Transform || EnPassant
         auto is_figure_attack = [this](Figure* figure) {
             bool ans = false;
             for (int x = 0; x < 8; ++x)
