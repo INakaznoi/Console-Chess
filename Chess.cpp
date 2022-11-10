@@ -67,6 +67,12 @@ Figure*& BoardType::operator()(const Position& p){
         }
     }
 
+    Referee::~Referee() {
+    for (auto& el : board_)
+        for(auto& e : el)
+            delete e;
+}
+
 void Referee::print() const {
     for(auto& _ :board_)
         std::cout << '-';
@@ -91,6 +97,7 @@ void Referee::print() const {
         auto start_figure = board_(start);
         if (err > SeparateErrors)
             return err;
+        // err == Normal || LeftCastling || RightCastling || Transform || EnPassant
         auto is_figure_attack = [this](Figure* figure) {
             bool ans = false;
             for (int x = 0; x < 8; ++x)
@@ -314,8 +321,5 @@ void Referee::print() const {
             std::cout << std::endl << referee.move({x1,y1},{x2,y2}) << std::endl;
         }
     }
-
-
-
 
 

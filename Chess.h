@@ -43,6 +43,7 @@ public:
     Referee();
     void print() const;
     Error_move move(Position start, Position final);
+    ~Referee();
 };
 
 class Figure {
@@ -63,6 +64,7 @@ public:
     Error_move can_move(const BoardType& board, const Position& final_pos) const;
     virtual void move(const Position& final_pos);
     void temp_move(const Position& final_pos);
+    virtual ~Figure(){};
 };
 
 class Pawn : public Figure{
